@@ -3,136 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Casa dos Bolos Caseiros</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<title>Curso de Bolos Caseiros</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  /* ====== Cores e fontes ====== */
-  :root {
-    --bg-degrade: linear-gradient(135deg, #f7e6f0, #fcd0e0);
-    --caixa-bg: #ffffffcc;
-    --botao-verde: #28a745;
-    --botao-verde-hover: #1fa63a;
+
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  color:#333;
+  overflow-x:hidden;
+}
+
+/* ===== FUNDO COM VINHETA ===== */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:
+    radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.5)),
+    linear-gradient(135deg,#f8d7e7,#e4c1f9);
+  z-index:-1;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+/* ===== HERO ===== */
+.hero{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.hero-text{
+  flex:1;
+}
+
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  color:#4b004b;
+  margin-bottom:20px;
+}
+
+.hero-text p{
+  font-size:1.1rem;
+  margin-bottom:25px;
+}
+
+/* ===== VIDEO ===== */
+.hero-video{
+  flex:1;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* ===== BOTÃO ===== */
+.btn{
+  background:#2ecc71;
+  color:#fff;
+  padding:16px 40px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:500;
+  display:inline-block;
+  position:relative;
+}
+
+/* glow animado */
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  box-shadow:0 0 20px #2ecc71;
+  opacity:0.7;
+  animation:glow 1.8s infinite;
+}
+
+@keyframes glow{
+  0%{opacity:0.3}
+  50%{opacity:1}
+  100%{opacity:0.3}
+}
+
+/* ===== CTA FIXO ===== */
+.cta-fixed{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:999;
+}
+
+/* ===== SEÇÕES ===== */
+.section{
+  margin-top:80px;
+}
+
+.card{
+  background:#ffffffdd;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ===== BENEFÍCIOS ===== */
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* ===== CARROSSEL ===== */
+.carousel{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  padding:10px;
+}
+
+.carousel img{
+  height:220px;
+  border-radius:12px;
+  flex-shrink:0;
+}
+
+/* ===== PROVAS ===== */
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* ===== FAQ ===== */
+.faq-item{
+  margin-bottom:15px;
+  cursor:pointer;
+}
+
+.faq-answer{
+  display:none;
+  margin-top:5px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width:900px){
+  .hero{
+    flex-direction:column;
   }
-  body { margin:0; font-family: 'Roboto', sans-serif; background: var(--bg-degrade); color: #333; scroll-behavior: smooth; }
-  h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
 
-  /* ====== Topo e layout principal ====== */
-  .container { max-width: 1200px; margin: auto; padding: 50px 20px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: space-between; }
-  .texto { flex: 1 1 500px; }
-  .texto h1 { font-size: 3rem; margin-bottom: 20px; color: #4b004b; }
-  .texto h1 span { color: #e91e63; }
-  .texto p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px; }
-
-  .video { flex: 1 1 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-  .video iframe { width: 100%; height: 315px; border: none; }
-
-  /* ====== Botão de compra ====== */
-  .btn-comprar {
-    background-color: var(--botao-verde);
-    color: #fff;
-    padding: 15px 35px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 0 15px rgba(40,167,69,0.6);
-    transition: all 0.5s ease-in-out;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
-    animation: glow 2s infinite alternate;
+  .hero-text h1{
+    font-size:2.2rem;
   }
-  .btn-comprar:hover { background-color: var(--botao-verde-hover); transform: scale(1.05); }
+}
 
-  @keyframes glow {
-    0% { box-shadow: 0 0 10px rgba(40,167,69,0.6); }
-    50% { box-shadow: 0 0 25px rgba(40,167,69,0.9); }
-    100% { box-shadow: 0 0 10px rgba(40,167,69,0.6); }
-  }
-
-  /* ====== Seções ====== */
-  section { padding: 50px 20px; }
-  .caixa { background-color: var(--caixa-bg); padding: 25px; border-radius: 15px; margin-bottom: 25px; }
-  .beneficios { display: flex; flex-wrap: wrap; gap: 20px; }
-  .beneficio { flex: 1 1 300px; padding: 25px; border-radius: 15px; background-color: var(--caixa-bg); text-align: center; font-weight: 500; }
-
-  .depoimentos { display: flex; flex-wrap: wrap; gap: 20px; }
-  .depoimento { flex: 1 1 300px; background-color: var(--caixa-bg); padding: 20px; border-radius: 15px; }
-
-  .faq { max-width: 800px; margin: auto; }
-  .faq-item { margin-bottom: 15px; background-color: var(--caixa-bg); padding: 15px; border-radius: 10px; }
-  .faq-item h4 { cursor: pointer; }
-
-  /* ====== Responsivo ====== */
-  @media (max-width: 900px) {
-    .container { flex-direction: column-reverse; text-align: center; }
-    .video iframe { height: 250px; }
-    .btn-comprar { top: auto; bottom: 20px; right: 50%; transform: translateX(50%); }
-  }
 </style>
 </head>
+
 <body>
 
-<!-- Botão de compra fixo -->
-<a href="ttps://go.hotmart.com/P104878402Q?ap=3bac" class="btn-comprar">Quero Começar Agora</a>
+<!-- BOTÃO FIXO -->
+<a href="https://go.hotmart.com/P104878402Q?ap=3bac" class="btn cta-fixed">Comprar Agora</a>
 
-<!-- Topo: Texto + Vídeo -->
-<div class="container">
-  <div class="texto">
-    <h1>Aprenda a Fazer Bolos Caseiros e <span>Comece a Vender</span></h1>
-    <p>Do zero à sua primeira venda. Passo a passo simples, mesmo sem experiência na cozinha.</p>
-  </div>
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/qU2pQLMODNw" title="Vídeo do Curso" allowfullscreen></iframe>
-  </div>
+<!-- HERO -->
+<div class="container hero">
+
+<div class="hero-text">
+<h1>Aprenda a fazer bolos irresistíveis e transforme isso em renda</h1>
+<p>Mesmo começando do zero, você pode criar bolos que encantam e começar a vender com confiança.</p>
+
+<a href="https://go.hotmart.com/P104878402Q?ap=3bac" class="btn">Quero começar agora</a>
 </div>
 
-<!-- Benefícios -->
-<section class="beneficios">
-  <div class="beneficio">Receitas exclusivas e fáceis de reproduzir.</div>
-  <div class="beneficio">Decoração profissional para todos os bolos.</div>
-  <div class="beneficio">Aprenda a vender e lucrar de casa.</div>
-</section>
+<div class="hero-video">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/qU2pQLMODNw" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<!-- Depoimentos -->
-<section class="depoimentos">
-  <div class="depoimento">
-    <p>"O curso mudou minha vida! Agora consigo vender bolos incríveis todos os dias."</p>
-    <strong>- Cliente Feliz</strong>
-  </div>
-  <div class="depoimento">
-    <p>"Aprendi técnicas que nunca imaginei. Super recomendo!"</p>
-    <strong>- Aluna Satisfeita</strong>
-  </div>
-</section>
+</div>
+
+<!-- BENEFÍCIOS -->
+<div class="container section">
+<div class="benefits">
+
+<div class="card">Receitas testadas e fáceis</div>
+<div class="card">Técnicas de decoração profissional</div>
+<div class="card">Como vender seus bolos</div>
+
+</div>
+</div>
+
+<!-- CARROSSEL -->
+<div class="container section">
+<h2>Veja o que você vai conseguir fazer</h2>
+
+<div class="carousel">
+<img src="https://i.imgur.com/Zy8axIk.jpeg">
+<img src="https://imgur.com/6MtxiLz">
+<img src="https://imgur.com/RgOFt3W">
+<img src="https://imgur.com/RsKrcMV">
+</div>
+</div>
+
+<!-- SOBRE O CURSO -->
+<div class="container section">
+<div class="card">
+<h2>O que você vai aprender</h2>
+<p>Você terá acesso a um método completo que ensina desde o básico até a produção de bolos que realmente vendem. Tudo explicado de forma simples, direto ao ponto.</p>
+
+<a href="https://go.hotmart.com/P104878402Q?ap=3bac" class="btn">Quero acesso ao curso</a>
+</div>
+</div>
+
+<!-- PROVAS -->
+<div class="container section">
+<h2>Resultados reais</h2>
+
+<div class="testimonials">
+<div class="card">"Comecei sem saber nada e hoje já vendo meus bolos."</div>
+<div class="card">"Método simples e direto, consegui aplicar rápido."</div>
+</div>
+</div>
 
 <!-- FAQ -->
-<section class="faq">
-  <div class="faq-item">
-    <h4>O curso é para iniciantes?</h4>
-    <p>Sim! Todas as aulas são pensadas para quem está começando.</p>
-  </div>
-  <div class="faq-item">
-    <h4>Preciso de equipamentos especiais?</h4>
-    <p>Não, você vai usar materiais que provavelmente já tem em casa.</p>
-  </div>
-  <div class="faq-item">
-    <h4>Como recebo o acesso ao curso?</h4>
-    <p>Após a compra, você receberá o link de acesso via Hotmart imediatamente.</p>
-  </div>
-</section>
+<div class="container section">
+<h2>Perguntas frequentes</h2>
+
+<div class="faq-item">
+<strong>Funciona para iniciantes?</strong>
+<div class="faq-answer">Sim, o curso foi feito para quem está começando.</div>
+</div>
+
+<div class="faq-item">
+<strong>Preciso de muito tempo?</strong>
+<div class="faq-answer">Você pode aprender no seu ritmo.</div>
+</div>
+
+</div>
 
 <script>
-  // Toggle FAQ
-  document.querySelectorAll('.faq-item h4').forEach(item => {
-    item.addEventListener('click', () => {
-      const p = item.nextElementSibling;
-      if (p.style.display === 'block') { p.style.display = 'none'; } 
-      else { p.style.display = 'block'; }
-    });
-  });
+
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    let answer=item.querySelector('.faq-answer')
+    answer.style.display = answer.style.display === 'block' ? 'none':'block'
+  })
+})
+
 </script>
 
 </body>

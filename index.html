@@ -1,128 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curso Online de Bolos Caseiros - Marrara</title>
-  <style>
-    body { margin:0; font-family: 'Arial', sans-serif; background:#fffaf7; color:#333; line-height:1.6; }
-    a { text-decoration:none; }
-    header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:50px 10%; background:#fff5f5; }
-    header .texto { flex:1; padding-right:20px; }
-    header h1 { font-size:2.8em; color:#d63447; margin-bottom:20px; }
-    header p { font-size:1.2em; margin-bottom:30px; }
-    header .cta { display:inline-block; background:#ff3c3c; color:#fff; padding:18px 40px; font-weight:bold; font-size:1.2em; border-radius:8px; transition:0.3s; }
-    header .cta:hover { background:#e63232; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso de Bolos Online - Landing Page</title>
+<style>
+  /* ====== Cores ====== */
+  :root {
+    --bg-roxo: #4B0082;
+    --caixa-rosa: #FFC0CB;
+    --botao-verde: #28a745;
+    --botao-verde-hover: #1e7e34;
+  }
 
-    header .video { flex:1; text-align:right; }
-    header video { max-width:100%; border-radius:10px; }
+  /* ====== Reset básico ====== */
+  * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+  body { background-color: var(--bg-roxo); color: #fff; }
 
-    section { padding:60px 10%; max-width:1200px; margin:0 auto; }
-    section h2 { text-align:center; font-size:2.2em; color:#d63447; margin-bottom:40px; }
-    .benefits { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .benefit { background:#fff; flex:1 1 300px; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; transition:0.3s; }
-    .benefit:hover { transform: translateY(-5px); }
-    .benefit h3 { color:#d63447; margin-bottom:15px; font-size:1.5em; }
-    .benefit p { font-size:1em; }
+  /* ====== Container principal ====== */
+  .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 50px 0; }
 
-    .images-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:40px; }
-    .images-grid img { width:100%; border-radius:10px; }
+  /* ====== Topo ====== */
+  .topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px; margin-bottom: 50px; }
+  .topo .texto { flex: 1 1 500px; }
+  .topo .texto h1 { font-size: 2.8rem; margin-bottom: 20px; }
+  .topo .texto p { font-size: 1.2rem; margin-bottom: 30px; line-height: 1.5; }
+  .topo .video { flex: 1 1 500px; }
+  .topo .video iframe { width: 100%; height: 315px; border-radius: 10px; }
 
-    .cta-section { text-align:center; margin:60px 0; }
-    .cta-section a { background:#ff3c3c; color:#fff; padding:20px 50px; font-size:1.3em; font-weight:bold; border-radius:8px; transition:0.3s; }
-    .cta-section a:hover { background:#e63232; }
+  /* ====== Botões ====== */
+  .btn {
+    background-color: var(--botao-verde);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(40,167,69,0.6);
+  }
+  .btn:hover {
+    background-color: var(--botao-verde-hover);
+    box-shadow: 0 0 20px rgba(40,167,69,1);
+    transform: translateY(-2px);
+  }
 
-    .faq { max-width:900px; margin:60px auto; }
-    .faq-item { margin-bottom:20px; }
-    .faq-item h4 { font-size:1.2em; color:#d63447; margin-bottom:8px; }
-    .faq-item p { font-size:1em; background:#fff0f0; padding:15px; border-radius:8px; }
+  /* ====== Seções ====== */
+  section { margin-bottom: 50px; }
+  .caixa { background-color: var(--caixa-rosa); color: #000; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+  .beneficios { display: flex; flex-wrap: wrap; gap: 20px; }
+  .beneficio { flex: 1 1 300px; padding: 20px; border-radius: 12px; background-color: var(--caixa-rosa); }
 
-    footer { text-align:center; padding:25px 10%; background:#d63447; color:#fff; margin-top:40px; }
-    footer p { margin:0; font-size:1em; }
-  </style>
+  /* ====== Depoimentos ====== */
+  .depoimentos { display: flex; flex-wrap: wrap; gap: 20px; }
+  .depoimento { flex: 1 1 300px; background-color: var(--caixa-rosa); padding: 20px; border-radius: 12px; }
+
+  /* ====== FAQ ====== */
+  .faq { background-color: var(--caixa-rosa); padding: 20px; border-radius: 12px; }
+  .faq-item { margin-bottom: 15px; }
+  .faq-item h4 { cursor: pointer; margin-bottom: 5px; }
+
+  /* ====== Responsivo ====== */
+  @media (max-width: 900px) {
+    .topo { flex-direction: column-reverse; }
+    .topo .video iframe { height: 250px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header>
+<div class="container">
+  <!-- Topo: Texto + Vídeo -->
+  <div class="topo">
     <div class="texto">
-      <h1>Transforme sua paixão por bolos em lucro real!</h1>
-      <p>Aprenda técnicas profissionais de bolos caseiros e comece a vender com lucro. Curso passo a passo para iniciantes e avançados.</p>
-      <a class="cta" href="https://go.hotmart.com/P104878402Q?ap=3bac">Quero me inscrever agora</a>
+      <h1>Aprenda a Fazer Bolos Profissionais e Lucre de Casa!</h1>
+      <p>Descubra técnicas fáceis e rápidas para criar bolos incríveis que vendem muito. Não perca tempo, transforme sua paixão em renda agora mesmo!</p>
+      <a href="ttps://go.hotmart.com/P104878402Q?ap=3bac" class="btn">QUERO COMPRAR AGORA</a>
     </div>
     <div class="video">
-      <video src="https://imgur.com/JnZLcd2.mp4" autoplay muted loop playsinline></video>
+      <iframe src="https://www.youtube.com/embed/qU2pQLMODNw" title="Vídeo do Curso" frameborder="0" allowfullscreen></iframe>
     </div>
-  </header>
+  </div>
 
   <!-- Benefícios -->
-  <section>
-    <h2>O que você vai aprender</h2>
-    <div class="benefits">
-      <div class="benefit">
-        <h3>Bolos Decorados Profissionais</h3>
-        <p>Aprenda técnicas que deixam seus bolos irresistíveis e com aparência de confeitaria premium.</p>
-      </div>
-      <div class="benefit">
-        <h3>Receitas Lucrativas</h3>
-        <p>Receitas testadas para que você consiga vender com margem de lucro real.</p>
-      </div>
-      <div class="benefit">
-        <h3>Venda Online e Presencial</h3>
-        <p>Estratégias para você vender seus bolos em redes sociais e presencialmente, sem complicações.</p>
-      </div>
-    </div>
+  <section class="beneficios">
+    <div class="beneficio">Aprenda receitas exclusivas e fáceis de fazer.</div>
+    <div class="beneficio">Domine técnicas de decoração profissional.</div>
+    <div class="beneficio">Ganhe dinheiro vendendo bolos de alta demanda.</div>
   </section>
 
-  <!-- Imagens promocionais -->
-  <section>
-    <h2>Veja alguns dos bolos que você vai aprender a fazer</h2>
-    <div class="images-grid">
-      <img src="https://imgur.com/6MtxiLz" alt="Bolo 1">
-      <img src="https://imgur.com/RgOFt3W" alt="Bolo 2">
-      <img src="https://imgur.com/RsKrcMV" alt="Bolo 3">
-      <img src="https://i.imgur.com/Zy8axIk.jpeg" alt="Bolo 4">
-      <img src="https://imgur.com/k5OFNL5" alt="Bolo 5">
-      <img src="https://imgur.com/riTRLbz" alt="Bolo 6">
-      <img src="https://imgur.com/moRWfB9" alt="Bolo 7">
-      <img src="https://imgur.com/M61kZDb" alt="Bolo 8">
-      <img src="https://imgur.com/g0mUNPA" alt="Bolo 9">
-      <img src="https://imgur.com/75G4h4T" alt="Bolo 10">
+  <!-- Depoimentos -->
+  <section class="depoimentos">
+    <div class="depoimento">
+      <p>"O curso mudou minha vida! Agora consigo vender bolos incríveis todos os dias."</p>
+      <strong>- Cliente Feliz</strong>
     </div>
-  </section>
-
-  <!-- CTA principal -->
-  <section class="cta-section">
-    <h2>Garanta sua vaga no curso agora!</h2>
-    <p>Curso completo + material bônus exclusivo.</p>
-    <a href="https://go.hotmart.com/P104878402Q?ap=3bac">Comprar Agora</a>
+    <div class="depoimento">
+      <p>"Aprendi técnicas que nunca imaginei. Super recomendo!"</p>
+      <strong>- Aluna Satisfeita</strong>
+    </div>
   </section>
 
   <!-- FAQ -->
   <section class="faq">
-    <h2>Perguntas Frequentes</h2>
     <div class="faq-item">
-      <h4>Não tenho experiência, consigo aprender?</h4>
-      <p>Sim! O curso é passo a passo, ideal para iniciantes e quem quer aprimorar técnicas.</p>
+      <h4>O curso é para iniciantes?</h4>
+      <p>Sim! Todas as aulas são pensadas para quem está começando.</p>
     </div>
     <div class="faq-item">
-      <h4>Quanto tempo preciso dedicar por dia?</h4>
-      <p>Aulas curtas que podem ser assistidas em qualquer horário, conforme sua disponibilidade.</p>
+      <h4>Preciso de equipamentos especiais?</h4>
+      <p>Não, você vai usar materiais que provavelmente já tem em casa.</p>
     </div>
     <div class="faq-item">
-      <h4>E se eu não gostar do curso?</h4>
-      <p>Garantia de 7 dias. Se não estiver satisfeito, devolvemos 100% do seu dinheiro.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Preciso comprar materiais específicos?</h4>
-      <p>O curso utiliza materiais simples de confeitaria que podem ser encontrados em qualquer cidade.</p>
+      <h4>Como faço para receber o acesso?</h4>
+      <p>Após a compra, você receberá imediatamente o link de acesso via Hotmart.</p>
     </div>
   </section>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Curso de Bolos Caseiros - Marrara. Todos os direitos reservados.</p>
-  </footer>
+<script>
+  // Código simples para toggle FAQ
+  document.querySelectorAll('.faq-item h4').forEach(item => {
+    item.addEventListener('click', () => {
+      const p = item.nextElementSibling;
+      if (p.style.display === 'block') { p.style.display = 'none'; } 
+      else { p.style.display = 'block'; }
+    });
+  });
+</script>
 
 </body>
 </html>
